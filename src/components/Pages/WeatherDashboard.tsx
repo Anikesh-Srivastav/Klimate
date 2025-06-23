@@ -5,7 +5,8 @@ import LoadingSkeleton from "../Loading_Error/Loading-skeleton"
 import { useForecastQuery, useReverseGeocodeQuery, useWeatherQuery } from "@/hooks/use-weather"
 import ErrorAlert from "../Loading_Error/ErrorAlert"
 import CurrentWeather from "../UI_Sections/CurrentWeather"
-import HourlyTemp from "../UI_Sections/Hourly-Temp"
+import HourlyTemp from "../UI_Sections/HourlyTemp"
+import WeatherDetails from "../UI_Sections/WeatherDetails"
 
 
 const WeatherDashboard = () => {
@@ -20,13 +21,6 @@ const WeatherDashboard = () => {
   const weatherQuery = useWeatherQuery(coordinates);
   const forecastQuery = useForecastQuery(coordinates);
   const locationQuery = useReverseGeocodeQuery(coordinates);
-
-  console.log("Weather Query:", weatherQuery);
-console.log("Forecast Query:", forecastQuery);
-console.log("Location Query:", locationQuery);
-
-  
-
 
 
   const handleRefresh = () => {
@@ -121,7 +115,9 @@ if(!weatherQuery.data || !forecastQuery.data) {
 
         <div>
           {/* details */}
+          <WeatherDetails data={weatherQuery.data} />
           {/* forecast */}
+          {/* <WeatherForecast  data={forecastQuery.data}/> */}
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import { useTheme } from "@/context/theme-provider";
 import { Moon, Sun } from "lucide-react";
 import { NavLink } from "react-router-dom"
+import CitySearch from "../UI_Sections/CitySearch";
 
 
 const Header = () => {
@@ -23,8 +24,9 @@ const Header = () => {
           className="h-14"
         />
       </NavLink>
-        <div>
+        <div className="flex gap-4">
             {/*Search*/}
+            <CitySearch/>
             {/*Theme Toggle*/}
             <div onClick={() => setTheme(isDark ? 'light' : 'dark')}
               className={`flex items-center cursor-pointer transition-transform duration-500
