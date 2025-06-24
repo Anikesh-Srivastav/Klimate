@@ -6,7 +6,7 @@
 
  ## 🚀 Live Demo
 
-🔗 [klimate-zeta.vercel.app](https://klimatev1.netlify.app/)
+🔗 [klimate](https://klimatev1.netlify.app/)
 
 ---
 
