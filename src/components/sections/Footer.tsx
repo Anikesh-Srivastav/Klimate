@@ -4,7 +4,7 @@ const Footer = () => {
       <div className="container mx-auto px-4 text-center text-gray-500 dark:text-gray-400 space-y-4">
         <div className="flex justify-center gap-6 text-sm flex-wrap">
           <a
-            href="https://www.linkedin.com/in/anikesh-srivastav"
+            href="https://www.linkedin.com/in/anikesh-srivastav-57822b29a/"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:underline hover:text-primary transition"
@@ -20,7 +20,7 @@ const Footer = () => {
             GitHub
           </a>
           <a
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=anikesh@example.com"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=anikeshsrivastab@gmail.com.com"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:underline hover:text-primary transition"
