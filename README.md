@@ -1,54 +1,61 @@
-# React + TypeScript + Vite
+# 🌦️ Klimate
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Klimate** is a sleek, modern weather application built with React and TypeScript. It delivers accurate, real-time weather updates using custom hooks and TanStack Query, wrapped in a beautiful, responsive UI using Tailwind CSS and ShadCN components.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<!-- ## 🚀 Live Demo
 
-## Expanding the ESLint configuration
+🔗 [klimate-zeta.vercel.app](https://klimate-zeta.vercel.app)-->
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 🧱 Tech Stack
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- **React + TypeScript** – Component-based architecture with static typing
+- **Vite** – Superfast bundler for development & production
+- **Tailwind CSS** – Utility-first CSS styling
+- **ShadCN UI** – Accessible component library
+- **TanStack Query** – Efficient data fetching and caching
+- **Custom Hooks** – Encapsulated logic for weather, location, and history
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## ✨ Features
+
+### 🔍 Weather at a Glance
+- Displays **current weather**, **hourly forecast**, and **detailed stats**
+- Automatically detects **your location** using browser geolocation
+
+### ❤️ Favorite Cities
+- Mark cities as favorites for quick access
+- Favorites saved in `localStorage`
+
+### 🧠 Custom Hooks (🏗️ Code Reusability)
+- `useWeatherQuery` – Fetches weather data using latitude & longitude
+- `useForecastQuery` – Retrieves hourly/daily forecast
+- `useLocationSearch` – Search cities using Geocoding API
+- `useSearchHistory` – Tracks and persists past searches
+
+### 📱 Responsive & Accessible
+- Mobile-friendly, accessible interface using ShadCN + Tailwind
+- Consistent dark mode design
+
+---
+
+## 🛠️ Installation & Usage
+
+```bash
+# Clone the repo
+git clone https://github.com/Anikesh-Srivastav/Klimate.git
+cd Klimate
+
+# Install dependencies
+npm install
+# or
+yarn
+
+# Start the development server
+npm run dev
+# or
+yarn dev
