@@ -22,7 +22,7 @@ import { Toaster } from 'sonner';
    return (
     <QueryClientProvider client={queryClient}>
         <BrowserRouter>
-           <ThemeProvider defaultTheme='system' storageKey='vite-ui-theme'>
+           <ThemeProvider defaultTheme='dark' storageKey='vite-ui-theme'>
               <AppLayout>
                  <Routes>
                    <Route path='/' element={<WeatherDashboard />} />
