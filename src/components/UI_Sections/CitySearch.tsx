@@ -18,7 +18,7 @@ import { format } from "date-fns";
 
     const handleSelect = (cityData: string) =>{
         const [lat, lon, name, country] = cityData.split('|');
-        //add to Search history
+
         addToHistory.mutate({
             query,
             name,
