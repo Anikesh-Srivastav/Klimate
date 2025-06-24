@@ -1,4 +1,4 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useLocalStorage } from "./use-local-storage";
 
 interface SearchHistoryItem {
@@ -13,50 +13,51 @@ interface SearchHistoryItem {
 }
 
 export function useSearchHistory() {
-  const [localHistory, setLocalHistory] = useLocalStorage<SearchHistoryItem[]>("search-history", []);
+  const [, setLocalStorage] = useLocalStorage<SearchHistoryItem[]>("search-history", []);
   const queryClient = useQueryClient();
 
-  // Read history using useQuery
   const historyQuery = useQuery<SearchHistoryItem[]>({
     queryKey: ["search-history"],
     queryFn: async () => {
-     
-      return [...localHistory].sort((a, b) => b.searchedAt - a.searchedAt);
+      const raw = localStorage.getItem("search-history");
+      const parsed = raw ? (JSON.parse(raw) as SearchHistoryItem[]) : [];
+      return parsed.sort((a, b) => b.searchedAt - a.searchedAt);
     },
-    initialData: localHistory,
+    initialData: [],
   });
-
 
   const addToHistory = useMutation({
     mutationFn: async (
       search: Omit<SearchHistoryItem, "id" | "searchedAt">
     ) => {
+      const raw = localStorage.getItem("search-history");
+      const prev: SearchHistoryItem[] = raw ? JSON.parse(raw) : [];
+
       const newSearch: SearchHistoryItem = {
         ...search,
         id: `${search.lat}-${search.lon}-${Date.now()}`,
         searchedAt: Date.now(),
       };
 
-      const filtered = localHistory.filter(
+      const filtered = prev.filter(
         (item) => !(item.lat === search.lat && item.lon === search.lon)
       );
 
       const newHistory = [newSearch, ...filtered].slice(0, 10);
 
-    
-      setLocalHistory(newHistory);
 
-   
+      setLocalStorage(newHistory);
+ 
       queryClient.setQueryData(["search-history"], newHistory);
 
       return newHistory;
     },
   });
 
-  // Mutation to clear history
   const clearHistory = useMutation({
     mutationFn: async () => {
-      setLocalHistory([]);
+      setLocalStorage([]);
+      localStorage.removeItem("search-history");
       queryClient.setQueryData(["search-history"], []);
       return [];
     },

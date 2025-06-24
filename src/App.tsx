@@ -5,6 +5,7 @@ import AppLayout from './components/AppLayout';
 import { ThemeProvider } from './context/theme-provider';
 import WeatherDashboard from './components/Pages/WeatherDashboard';
 import CityPage from './components/Pages/CityPage';
+import { Toaster } from 'sonner';
 
  const App = () => {
 
@@ -28,6 +29,7 @@ import CityPage from './components/Pages/CityPage';
                    <Route path='/city/:cityName' element={<CityPage />} />              
                  </Routes>
               </AppLayout>
+              <Toaster richColors />
            </ThemeProvider>  
         </BrowserRouter>
         <ReactQueryDevtools initialIsOpen={false} />

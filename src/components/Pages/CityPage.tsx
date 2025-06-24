@@ -6,6 +6,8 @@ import LoadingSkeleton from "../Loading_Error/Loading-skeleton";
 import CurrentWeather from "../UI_Sections/CurrentWeather";
 import HourlyTemp from "../UI_Sections/HourlyTemp";
 import WeatherDetails from "../UI_Sections/WeatherDetails";
+import WeatherForecast from "../UI_Sections/WeatherForecast";
+import FavoriteButton from "../UI_Sections/FavoriteButton";
 
 
 
@@ -41,7 +43,10 @@ const CityPage = () => {
     <div className="space-y-4"> 
       {/* Favourite cites */}
       <div className="flex items-center justify-between">
-          <h1 className="text-xl font-bold tracking-tight">My Location</h1>
+          <h1 className="text-3xl font-bold tracking-tight">{params.cityName}, {weatherQuery.data.sys.country }</h1>
+          <div>
+            <FavoriteButton data={{...weatherQuery.data, name: params.cityName}}/>
+          </div>
       </div>
       
       {/* Currently and Hourly Weather */}
@@ -61,7 +66,7 @@ const CityPage = () => {
           {/* details */}
           <WeatherDetails data={weatherQuery.data} />
           {/* forecast */}
-          {/* <WeatherForecast  data={forecastQuery.data}/> */}
+          <WeatherForecast  data={forecastQuery.data}/>
         </div>
       </div>
     </div>
