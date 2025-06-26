@@ -1,7 +1,6 @@
 name: Deploy Klimate to GitHub Pages
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
@@ -11,25 +10,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Set up Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20 # or 24 if you specifically need it
+          node-version: 20
 
-      # Install dependencies
-      - name: Install Dependencies
+      - name: Install dependencies
         run: npm install
 
-      # Build the Vite project
-      - name: Build Project
+      - name: Build project
         run: npm run build
 
-      # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
