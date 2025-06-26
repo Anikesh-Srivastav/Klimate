@@ -11,30 +11,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checking out the repo
+      # Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v4
 
-      #set up node.js
+      # Set up Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
-        with: 
-              node-version: 24
+        with:
+          node-version: 20 # or 24 if you specifically need it
 
-      #Installing Dependencies
+      # Install dependencies
       - name: Install Dependencies
         run: npm install
-      
-      #Build Project
-      - name: Building the Project
+
+      # Build the Vite project
+      - name: Build Project
         run: npm run build
 
-      #Deployment
-      - name: Deployment Project
+      # Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: dist
-
-      
-
+          publish_dir: ./dist
