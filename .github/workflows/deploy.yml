@@ -1,0 +1,39 @@
+name: Deploy Klimate to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checking out the repo
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      #set up node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with: 
+              node-version: 24
+
+      #Installing Dependencies
+      - name: Install Dependencies
+        run: npm install
+      
+      #Build Project
+      - name: Building the Project
+        run: npm run build
+
+      #Deployment
+      - name: Deployment Project
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: dist
+
+      
+
